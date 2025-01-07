@@ -44,18 +44,18 @@
                     <a class="nav-link" href="{{route('admin.index')}}">Admin</a>
                 </li>
                 <li class="nav-item"> 
-                  <a onclick="event.preventDefault(); document.getElementById('form-logout').submit()" class="nav-item">
+                  <a onclick="event.preventDefault(); document.getElementById('form-logout').submit()" class="nav-item"
                     class="nav-link" href="{{route('logout')}}">Logout
                   </a>
                 </li>
 
-                <form id="form-logout" action="{{route('logout')}}" method="post">
+                <form id="form-logout" action="{{route('custom.logout')}}" method="post">
                     @csrf
                 </form>
 
                 @else
                 <li class="nav-item">
-                    <a class="nav-link" href="/login">Login</a>
+                    <a class="nav-link" href="/custom-login">Login</a>
                 </li>
             @endif
 

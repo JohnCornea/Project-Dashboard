@@ -25,7 +25,7 @@
                     </a>
                 </li>
 
-                <form id="form-logout-dashboard" action="{{route('logout')}}" method="post">
+                <form id="form-logout-dashboard" action="{{route('custom.logout')}}" method="post">
                     @csrf
                 </form>
             </ul>

@@ -1,4 +1,6 @@
 <?php
+
+use App\Http\Controllers\CustomLoginController;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -26,3 +28,8 @@ Route::controller(HomeController::class)->group(function() {
 
 // Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::controller(CustomLoginController::class)->group(function(){
+    Route::get('/custom-login', 'customShowLoginForm')->name('custom.login');
+    Route::post('/custom-logout', 'customLogout')->name('custom.logout');
+    Route::post('/custom-login', 'customLogin')->name('custom.login.post');
+});
