@@ -32,4 +32,9 @@ Route::controller(CustomLoginController::class)->group(function(){
     Route::get('/custom-login', 'customShowLoginForm')->name('custom.login');
     Route::post('/custom-logout', 'customLogout')->name('custom.logout');
     Route::post('/custom-login', 'customLogin')->name('custom.login.post');
+    Route::get('/custom-show-link-form', 'customShowLinkForm')->name('custom.link.request');
+    Route::post('/custom-reset', 'customReset')->name('custom.reset');
+    Route::get('/custom-password/reset/{token}', 'customShowResetForm')->name('custom.show.reset');
+    Route::post('/custom-password/reset', 'customPasswordUpdate')->name('custom.update');
+
 });
