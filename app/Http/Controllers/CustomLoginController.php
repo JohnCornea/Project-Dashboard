@@ -18,21 +18,20 @@ class CustomLoginController extends Controller
 
     public function customShowLinkForm()
     {
-        return view('custom-show-link-form');   
+        return view('custom-show-link-form');
     }
 
     public function customShowResetForm(Request $request, $token)
     {
         $email = $request->query('email');
 
-        return view('custom-password-reset', ['email' => $email, 'token' => $token]);
+        return view('custom-password-reset', ['email'=> $email, 'token'=> $token]);
     }
 
     public function customPasswordUpdate(Request $request)
     {
-
-        // dd($request);
-        $request->validate([
+        //  dd($request);
+         $request->validate([
             'token' => 'required',
             'email' => 'required|email',
             'password' => 'required|confirmed',
@@ -59,7 +58,6 @@ class CustomLoginController extends Controller
 
     public function customReset(Request $request)
     {
-        // dd($request);
         $request->validate([
             'email' => 'required|email'
         ]);

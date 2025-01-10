@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CustomLoginController;
+use App\Http\Controllers\CustomRegistrationController;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -29,12 +30,21 @@ Route::controller(HomeController::class)->group(function() {
 // Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::controller(CustomLoginController::class)->group(function(){
-    Route::get('/custom-login', 'customShowLoginForm')->name('custom.login');
+
+    // Route::get('/custom-login', 'customShowLoginForm')->name('custom.login');
+    Route::view('/custom-login', 'custom-login')->name('custom.login')->middleware('guest');
     Route::post('/custom-logout', 'customLogout')->name('custom.logout');
     Route::post('/custom-login', 'customLogin')->name('custom.login.post');
-    Route::get('/custom-show-link-form', 'customShowLinkForm')->name('custom.link.request');
+    Route::get('/custom-show-link-form/', 'customShowLinkForm')->name('custom.link.request');
     Route::post('/custom-reset', 'customReset')->name('custom.reset');
     Route::get('/custom-password/reset/{token}', 'customShowResetForm')->name('custom.show.reset');
-    Route::post('/custom-password/reset', 'customPasswordUpdate')->name('custom.update');
+    Route::post('/custom-password/reset/', 'customPasswordUpdate')->name('custom.update');
+});
+
+
+Route::controller(CustomRegistrationController::class)->group(function(){
+
+    Route::view('/custom-register', 'custom-register')->name('custom.show.register')->middleware('guest');
+    Route::post('/custom-register', 'customRegister')->name('custom.register');
 
 });

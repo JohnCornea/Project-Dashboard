@@ -2,10 +2,11 @@
 
 namespace App\Providers;
 
-use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Auth\Notifications\ResetPassword;
 use App\Models\User;
+
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -20,15 +21,21 @@ class AuthServiceProvider extends ServiceProvider
 
     /**
      * Register any authentication / authorization services.
+     *
+     * @return void
      */
-    public function boot(): void
+    public function boot()
     {
         $this->registerPolicies();
 
-        // Define gates or other authentication logic here if needed
         ResetPassword::createUrlUsing(function(User $user, $token){
 
-            return 'http://127.0.0.1:8000/custom-password/reset/' . $token . '?email=' . $user->email;
+        return 'http://127.0.0.1:8000/custom-password/reset/' . $token . '?email=' . $user->email;
+
         });
+        // Example of defining a custom Gate
+        // Gate::define('view-dashboard', function ($user) {
+        //     return $user->isAdmin();
+        // });
     }
 }

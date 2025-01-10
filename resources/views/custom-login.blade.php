@@ -7,10 +7,10 @@
 
     @if (session('status'))
     <div class="alert alert-success">
-        {{session('status')}}
+         {{session('status')}}
     </div>
     @endif
-    
+
     <div class="card-body">
         <form method="POST" action="{{route('custom.login.post')}}">
             @csrf
@@ -43,7 +43,7 @@
         </form>
     </div>
     <div class="card-footer text-center py-3">
-        <div class="small"><a href="register.html">Need an account? Sign up!</a></div>
+        <div class="small"><a href="{{route('custom.show.register')}}">Need an account? Sign up!</a></div>
     </div>
 </div>
 

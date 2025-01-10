@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\User;
 
 class HomeController extends Controller
 {
@@ -24,6 +25,17 @@ class HomeController extends Controller
      */
     public function index()
     {
+        // $user = new User();
+
+        // $user->name = "WILLIAM";
+        // $user->lastname = "dummy1";
+        // $user->email = "william@gmail.com";
+        // $user->password = "parola1";
+
+        // $user->save();
+
+        // return "SAVED";
+
         $posts = Post::with('comments', 'user')->paginate(10);
 
         return view('home', compact('posts'));
